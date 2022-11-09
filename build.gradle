@@ -77,6 +77,14 @@ repositories {
     maven { url 'https://modmaven.dev/' }
 }
 
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:' + project.minecraft_version + '-' + project.forge_version
 
